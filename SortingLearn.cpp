@@ -17,6 +17,41 @@ void selection_sort(vector<int>& arr, int n) {
 		arr[i] = temp;
 	}
 }
+void bubble_sort(vector<int>& arr, int n) {
+	for (int i = n-1; i >= 0; i--)
+	{
+		//int mini = i;
+		bool didSwap = false;
+		for (int j = 0; j <= i-1; j++)
+		{
+			if (arr[j] > arr[j+1])
+			{
+				int temp = arr[j+1];
+				arr[j+1] = arr[j];
+				arr[j] = temp;
+				didSwap = true;
+			}
+		}
+		if (!didSwap) //thus in the best case complextity it will be O(n)		
+		{
+			break;
+		}
+	}
+}
+
+void insertion_sort(vector<int>& arr, int n) {
+	for (int i = 0; i <= n - 1; i++)
+	{
+		int j = i;
+		while (j > 0 && arr[j-1] > arr[j])
+		{
+			int temp = arr[j - 1];
+			arr[j - 1] = arr[j];
+			arr[j] = temp;
+			j--;
+		}
+	}
+}
 
 int main() {
 	int n;
@@ -26,7 +61,7 @@ int main() {
 	{
 		cin >> arr[i];
 	}
-	selection_sort(arr, n); //sorting the array after receiving input and printing it out
+	insertion_sort(arr, n); //sorting the array after receiving input and printing it out
 	for (int i = 0; i < n; i++)
 	{
 		cout << arr[i] << " ";
